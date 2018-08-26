@@ -4,6 +4,10 @@ from mxnet.gluon import nn
 from mxnet import nd
 import mxnet as mx
 
+def Squash(vector, axis):
+    norm = nd.sum(nd.square(vector), axis, keepdims=True)
+    v_j = norm/(1+norm)/nd.sqrt(norm, keepdims=True)*vector
+    return v_j
 
 class STN3d(nn.Block):
     def __init__(self, num_points = 2500):
@@ -44,9 +48,10 @@ class STN3d(nn.Block):
 
 
 class PointNetfeat(nn.Block):
-    def __init__(self, num_points = 2500, global_feat = True):
+    def __init__(self, num_points = 2500, global_feat = True, routing=None):
         super(PointNetfeat, self).__init__()
         self.stn = STN3d(num_points = num_points)
+        self.routing = routing
         self.conv1 = nn.Conv1D(64, 1)
         self.conv2 = nn.Conv1D(128, 1)
         self.conv3 = nn.Conv1D(1024, 1)
@@ -58,6 +63,8 @@ class PointNetfeat(nn.Block):
         self.global_feat = global_feat
     def forward(self, x):
 
+        if self.routing is not None:
+            routing_weight = nd.softmax(nd.zeros(shape=(1, 1, self.num_points), ctx=x.context),axis=2)
         trans = self.stn(x)
         x = nd.transpose(x,(0,2,1))
         x = nd.batch_dot(x, trans)
@@ -66,7 +73,17 @@ class PointNetfeat(nn.Block):
         pointfeat = x
         x = nd.relu(self.bn2(self.conv2(x)))
         x = self.bn3(self.conv3(x))
-        x = self.mp1(x)
+        if self.routing is not None:
+            s = nd.sum(x * routing_weight, axis=2, keepdims=True)
+            # v = Squash(s, axis=1)
+            for _ in range(self.routing):
+                routing_weight = routing_weight + nd.sum(x * s, axis=1,keepdims=True)
+                c = nd.softmax(routing_weight, axis=2)
+                s = nd.sum(x * c, axis=2, keepdims=True)
+                # v = Squash(s, axis=1)
+            x = s
+        else:
+            x = self.mp1(x)
         x = nd.flatten(x)
         if self.global_feat:
             return x, trans
@@ -76,10 +93,10 @@ class PointNetfeat(nn.Block):
             return nd.concat(x, pointfeat, dim=1), trans
 
 class PointNetCls(nn.Block):
-    def __init__(self, num_points = 2500, k = 2):
+    def __init__(self, num_points = 2500, k = 2, routing=None):
         super(PointNetCls, self).__init__()
         self.num_points = num_points
-        self.feat = PointNetfeat(num_points, global_feat=True)
+        self.feat = PointNetfeat(num_points, global_feat=True, routing=routing)
         self.fc1 = nn.Dense(512)
         self.fc2 = nn.Dense(256)
         self.fc3 = nn.Dense(k)
@@ -96,11 +113,11 @@ class PointNetCls(nn.Block):
 
 
 class PointNetDenseCls(nn.Block):
-    def __init__(self, num_points = 2500, k = 2):
+    def __init__(self, num_points = 2500, k = 2, routing=None):
         super(PointNetDenseCls, self).__init__()
         self.num_points = num_points
         self.k = k
-        self.feat = PointNetfeat(num_points, global_feat=False)
+        self.feat = PointNetfeat(num_points, global_feat=False, routing=routing)
         self.conv1 = nn.Conv1D(512, 1)
         self.conv2 = nn.Conv1D(256, 1)
         self.conv3 = nn.Conv1D(128, 1)
@@ -117,8 +134,8 @@ class PointNetDenseCls(nn.Block):
         x = nd.relu(self.bn3(self.conv3(x)))
         x = self.conv4(x)
         x = x.transpose((0,2,1))
-        x = nd.log_softmax(x.reshape(-1,self.k), axis=-1)
-        x = x.reshape(batchsize, self.num_points, self.k)
+        x = x.log_softmax(axis=-1)
+        # x = x.reshape(batchsize, self.num_points, self.k)
         return x, trans
 
 
