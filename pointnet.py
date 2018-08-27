@@ -84,11 +84,9 @@ class PointNetfeat(nn.Block):
             x = s
         else:
             x = self.mp1(x)
-        x = nd.flatten(x)
         if self.global_feat:
             return x, trans
         else:
-            x = nd.reshape(x,(-1, 1024, 1))
             x = x.repeat(self.num_points, axis=2)
             return nd.concat(x, pointfeat, dim=1), trans
 
@@ -127,14 +125,14 @@ class PointNetDenseCls(nn.Block):
         self.bn3 = nn.BatchNorm(in_channels=128)
 
     def forward(self, x):
-        batchsize = x.shape[0]
+        # batchsize = x.shape[0]
         x, trans = self.feat(x)
         x = nd.relu(self.bn1(self.conv1(x)))
         x = nd.relu(self.bn2(self.conv2(x)))
         x = nd.relu(self.bn3(self.conv3(x)))
         x = self.conv4(x)
         x = x.transpose((0,2,1))
-        x = x.log_softmax(axis=-1)
+        # x = x.log_softmax(axis=-1)
         # x = x.reshape(batchsize, self.num_points, self.k)
         return x, trans
 

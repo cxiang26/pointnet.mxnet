@@ -58,14 +58,14 @@ except OSError:
 blue = lambda x:'\033[94m' + x + '\033[0m'
 
 ctx = mx.gpu()
-classifier = PointNetDenseCls(k = num_classes)
+classifier = PointNetDenseCls(k = num_classes, routing=1)
 classifier.initialize(ctx=ctx)
 
 if opt.model != '':
     classifier.load_parameters(opt.model)
 
-optimizer = Trainer(classifier.collect_params(), 'sgd', {'learning_rate':0.01, 'momentum':0.9})
-L_loss = loss.SoftmaxCrossEntropyLoss(from_logits=True)
+optimizer = Trainer(classifier.collect_params(), 'sgd', {'learning_rate':0.001, 'momentum':0.9})
+L_loss = loss.SoftmaxCrossEntropyLoss()
 
 num_batch = len(dataset)/opt.batchSize
 
