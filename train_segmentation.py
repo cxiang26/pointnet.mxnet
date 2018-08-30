@@ -32,7 +32,7 @@ parser.add_argument('--model', type=str, default = '',  help='model path')
 
 
 opt = parser.parse_args()
-print (opt)
+print(opt)
 
 opt.manualSeed = random.randint(1, 10000) # fix seed
 print("Random Seed: ", opt.manualSeed)
