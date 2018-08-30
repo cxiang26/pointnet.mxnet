@@ -1,8 +1,9 @@
 
+from mxnet import nd
 from mxnet.gluon import nn
 from models.pointnet_globalfeat import PointNetfeat_vanilla
 
-class PointNetDenseCls(nn.HybridBlock):
+class PointNetDenseCls(nn.Block):
     def __init__(self, num_points=2500, k=2, routing=None):
         super(PointNetDenseCls, self).__init__()
         self.num_points = num_points
@@ -16,11 +17,11 @@ class PointNetDenseCls(nn.HybridBlock):
         self.bn2 = nn.BatchNorm(in_channels=256)
         self.bn3 = nn.BatchNorm(in_channels=128)
 
-    def hybrid_forward(self, F, x):
+    def forward(self, x):
         x, trans = self.feat(x)
-        x = F.relu(self.bn1(self.conv1(x)))
-        x = F.relu(self.bn2(self.conv2(x)))
-        x = F.relu(self.bn3(self.conv3(x)))
+        x = nd.relu(self.bn1(self.conv1(x)))
+        x = nd.relu(self.bn2(self.conv2(x)))
+        x = nd.relu(self.bn3(self.conv3(x)))
         x = self.conv4(x)
-        x = F.transpose(x, (0,2,1))
+        x = nd.transpose(x, (0,2,1))
         return x, trans

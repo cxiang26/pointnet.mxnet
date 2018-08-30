@@ -8,7 +8,8 @@ from mxnet.gluon.data import DataLoader
 from mxnet import gluon, nd
 from mxnet import autograd as ag
 from datasets import PartDataset
-from pointnet import PointNetCls
+# from pointnet import PointNetCls
+from models.pointnet_cls import PointNetCls
 import datetime
 import logging
 import sys
@@ -57,7 +58,7 @@ except OSError:
     pass
 
 
-classifier = PointNetCls(k = num_classes, num_points = opt.num_points, routing=1)
+classifier = PointNetCls(k = num_classes, num_points = opt.num_points, routing=None)
 ctx = mx.gpu(1)
 classifier.initialize(ctx=ctx)
 

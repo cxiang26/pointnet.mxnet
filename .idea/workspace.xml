@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19eb0c43-8535-4c62-97f3-8cc4f0880cfc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/pointnet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/pointnet_cls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/pointnet_cls_basic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/pointnet_globalfeat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/pointnet_seg.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/transform_nets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/pointnet_cls.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/pointnet_cls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/pointnet_cls_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/pointnet_cls_basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/pointnet_globalfeat.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/pointnet_globalfeat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/pointnet_seg.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/pointnet_seg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/transform_nets.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/transform_nets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_classification.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,49 +20,34 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="pointnet_cls.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="pointnet_cls.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/models/pointnet_cls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+                <state relative-caret-position="142">
+                  <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
                   <folding>
-                    <element signature="e#1#27#0" expanded="true" />
+                    <element signature="e#1#21#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pointnet_cls_basic.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="pointnet_cls_basic.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/pointnet_cls_basic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#1#27#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="51">
+                  <caret line="3" selection-start-line="3" selection-end-line="23" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pointnet_seg.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/models/pointnet_seg.py">
+          <file leaf-file-name="train_classification.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/train_classification.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+                <state relative-caret-position="391">
+                  <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
                   <folding>
-                    <element signature="e#1#27#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="transform_nets.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/models/transform_nets.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-                  <folding>
-                    <element signature="e#1#27#0" expanded="true" />
+                    <element signature="e#0#37#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -73,8 +56,8 @@
           <file leaf-file-name="pointnet_globalfeat.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/pointnet_globalfeat.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="726">
-                  <caret line="95" column="60" lean-forward="true" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
+                <state relative-caret-position="403">
+                  <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
                   <folding>
                     <element signature="e#1#27#0" expanded="true" />
                   </folding>
@@ -89,8 +72,8 @@
           <file leaf-file-name="pointnet.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/models/pointnet.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="77" column="24" selection-start-line="49" selection-end-line="90" selection-end-column="56" />
+                <state relative-caret-position="221">
+                  <caret line="31" selection-start-line="31" selection-end-line="31" />
                   <folding>
                     <element signature="e#0#37#0" expanded="true" />
                   </folding>
@@ -116,10 +99,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/models/transform_nets.py" />
-        <option value="$PROJECT_DIR$/models/pointnet_globalfeat.py" />
-        <option value="$PROJECT_DIR$/models/pointnet_seg.py" />
-        <option value="$PROJECT_DIR$/models/pointnet_cls.py" />
         <option value="$PROJECT_DIR$/models/pointnet_cls_basic.py" />
+        <option value="$PROJECT_DIR$/models/pointnet_seg.py" />
+        <option value="$PROJECT_DIR$/train_classification.py" />
+        <option value="$PROJECT_DIR$/models/pointnet_globalfeat.py" />
+        <option value="$PROJECT_DIR$/models/pointnet_cls.py" />
       </list>
     </option>
   </component>
@@ -154,7 +138,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pointnet.pytorch/train_segmentation.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/models/pointnet_cls_basic.py" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
   </component>
   <component name="RecentsManager">
@@ -173,6 +157,31 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="train_classification" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="pointnet.mxnet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_classification.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.train_classification" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -194,12 +203,12 @@
       <window_info content_ui="combo" id="Project" order="0" weight="0.24960423" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32924107" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39955357" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -212,6 +221,27 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/pointnet_globalfeat.py</url>
+          <line>75</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/pointnet_globalfeat.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/pointnet_globalfeat.py</url>
+          <line>92</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pointnet.py">
@@ -257,50 +287,57 @@
     <entry file="file://$PROJECT_DIR$/download.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/pointnet.py">
+    <entry file="file://$PROJECT_DIR$/models/transform_nets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="77" column="24" selection-start-line="49" selection-end-line="90" selection-end-column="56" />
+        <state relative-caret-position="-504">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#1#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/pointnet_seg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        <state relative-caret-position="204">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding>
-            <element signature="e#1#27#0" expanded="true" />
+            <element signature="e#1#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/pointnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../public/anaconda3/lib/python3.6/site-packages/mxnet/gluon/block.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="534" selection-start-line="534" selection-end-line="534" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/pointnet_globalfeat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="95" column="60" lean-forward="true" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
-          <folding>
-            <element signature="e#1#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/transform_nets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-          <folding>
-            <element signature="e#1#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/pointnet_cls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="403">
+          <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
           <folding>
             <element signature="e#1#27#0" expanded="true" />
           </folding>
@@ -309,10 +346,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/pointnet_cls_basic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/pointnet_cls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
           <folding>
-            <element signature="e#1#27#0" expanded="true" />
+            <element signature="e#1#21#0" expanded="true" />
           </folding>
         </state>
       </provider>

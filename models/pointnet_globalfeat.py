@@ -1,8 +1,9 @@
 
 from mxnet.gluon import nn
+from mxnet import nd
 from models.transform_nets import input_transform_net, feature_transform_net
 
-class PointNetfeat_vanilla(nn.HybridBlock):
+class PointNetfeat_vanilla(nn.Block):
     def __init__(self, num_points = 2500, global_feat = True, routing=None):
         super(PointNetfeat_vanilla, self).__init__()
         self.stn = input_transform_net(num_points = num_points)
@@ -16,25 +17,25 @@ class PointNetfeat_vanilla(nn.HybridBlock):
         self.mp1 = nn.MaxPool1D(num_points)
         self.num_points = num_points
         self.global_feat = global_feat
-    def hybrid_forward(self, F, x):
+    def forward(self, x):
 
         if self.routing is not None:
-            routing_weight = F.softmax(F.zeros(shape=(1, 1, self.num_points), ctx=x.context),axis=2)
+            routing_weight = nd.softmax(nd.zeros(shape=(1, 1, self.num_points), ctx=x.context),axis=2)
         trans = self.stn(x)
-        x = F.transpose(x,(0,2,1))
-        x = F.batch_dot(x, trans)
-        x = F.transpose(x,(0,2,1))
-        x = F.relu(self.bn1(self.conv1(x)))
+        x = nd.transpose(x,(0,2,1))
+        x = nd.batch_dot(x, trans)
+        x = nd.transpose(x,(0,2,1))
+        x = nd.relu(self.bn1(self.conv1(x)))
         pointfeat = x
-        x = F.relu(self.bn2(self.conv2(x)))
+        x = nd.relu(self.bn2(self.conv2(x)))
         x = self.bn3(self.conv3(x))
         if self.routing is not None:
-            s = F.sum(x * routing_weight, axis=2, keepdims=True)
+            s = nd.sum(x * routing_weight, axis=2, keepdims=True)
             # v = Squash(s, axis=1)
             for _ in range(self.routing):
-                routing_weight = routing_weight + F.sum(x * s, axis=1,keepdims=True)
-                c = F.softmax(routing_weight, axis=2)
-                s = F.sum(x * c, axis=2, keepdims=True)
+                routing_weight = routing_weight + nd.sum(x * s, axis=1,keepdims=True)
+                c = nd.softmax(routing_weight, axis=2)
+                s = nd.sum(x * c, axis=2, keepdims=True)
                 # v = Squash(s, axis=1)
             x = s
         else:
@@ -43,9 +44,9 @@ class PointNetfeat_vanilla(nn.HybridBlock):
             return x, trans
         else:
             x = x.repeat(self.num_points, axis=2)
-            return F.concat(x, pointfeat, dim=1), trans
+            return nd.concat(x, pointfeat, dim=1), trans
 
-class PointNetfeat(nn.HybridBlock):
+class PointNetfeat(nn.Block):
     def __init__(self, num_points = 2500, global_feat = True, routing=None):
         super(PointNetfeat, self).__init__()
         self.stn1 = input_transform_net(num_points = num_points)
@@ -62,29 +63,30 @@ class PointNetfeat(nn.HybridBlock):
         self.mp1 = nn.MaxPool1D(num_points)
         self.num_points = num_points
         self.global_feat = global_feat
-    def hybrid_forward(self, F, x):
+    def forward(self, x):
 
         if self.routing is not None:
-            routing_weight = F.softmax(F.zeros(shape=(1, 1, self.num_points), ctx=x.context),axis=2)
+            routing_weight = nd.softmax(nd.zeros(shape=(1, 1, self.num_points), ctx=x.context),axis=2)
         input_trans = self.stn1(x)
-        x = F.transpose(x,(0,2,1))
-        x = F.batch_dot(x, input_trans)
-        x = F.transpose(x,(0,2,1))
-        x = F.relu(self.bn1(self.conv1(x)))
-        x = F.relu(self.bn1_feat_trans(self.conv1_feat_trans(x)))
+        x = nd.transpose(x,(0,2,1))
+        x = nd.batch_dot(x, input_trans)
+        x = nd.transpose(x,(0,2,1))
+        x = nd.relu(self.bn1(self.conv1(x)))
+        x = nd.relu(self.bn1_feat_trans(self.conv1_feat_trans(x)))
         feat_trans = self.stn2(x)
-        x = F.transpose(x, (0, 2, 1))
-        x = F.batch_dot(x, feat_trans)
+        x = nd.transpose(x, (0, 2, 1))
+        x = nd.batch_dot(x, feat_trans)
+        x = x.transpose((0, 2, 1))
         pointfeat = x
-        x = F.relu(self.bn2(self.conv2(x)))
+        x = nd.relu(self.bn2(self.conv2(x)))
         x = self.bn3(self.conv3(x))
         if self.routing is not None:
-            s = F.sum(x * routing_weight, axis=2, keepdims=True)
+            s = nd.sum(x * routing_weight, axis=2, keepdims=True)
             # v = Squash(s, axis=1)
             for _ in range(self.routing):
-                routing_weight = routing_weight + F.sum(x * s, axis=1,keepdims=True)
-                c = F.softmax(routing_weight, axis=2)
-                s = F.sum(x * c, axis=2, keepdims=True)
+                routing_weight = routing_weight + nd.sum(x * s, axis=1,keepdims=True)
+                c = nd.softmax(routing_weight, axis=2)
+                s = nd.sum(x * c, axis=2, keepdims=True)
                 # v = Squash(s, axis=1)
             x = s
         else:
@@ -93,4 +95,4 @@ class PointNetfeat(nn.HybridBlock):
             return x, feat_trans
         else:
             x = x.repeat(self.num_points, axis=2)
-            return F.concat(x, pointfeat, dim=1), feat_trans
+            return nd.concat(x, pointfeat, dim=1), feat_trans
