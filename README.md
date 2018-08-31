@@ -1,6 +1,6 @@
 # PointNet.mxnet
 This repo is implementation for PointNet(https://arxiv.org/abs/1612.00593) in mxnet. The model is in `pointnet.py` or `models/`.
-
+The implementation of this repo refers to this [code](https://github.com/fxia22/pointnet.pytorch)
 
 # Download data and running
 
@@ -21,6 +21,7 @@ Sample segmentation result:
 
 # Links
 
+- [Pytorch implementation](https://github.com/fxia22/pointnet.pytorch)
 - [Project Page](http://stanford.edu/~rqi/pointnet/)
 - [Tensorflow implementation](https://github.com/charlesq34/pointnet)
-- [Pytorch implementation](https://github.com/fxia22/pointnet.pytorch)
+
